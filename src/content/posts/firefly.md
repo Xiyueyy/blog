@@ -1,13 +1,18 @@
-# 关于我 / About Me
+---
+title: Firefly 一款清新美观的 Astro 博客主题模板
+published: 2025-10-13
+pinned: true
+description: Firefly 是一款基于 Astro 框架开发的清新美观且现代化个人博客主题，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。
+tags: [Markdown, Firefly]
+category: 文章示例
+draft: false
+---
 
-你好！我是 **夏叶** ，一个在数字世界中默默无闻的一片叶子。
-
-## 🛠️ 关于本站
-
-这个网站使用 **Astro** 框架构建，采用了 [Firefly](https://github.com/CuteLeaf/Firefly)模板
-
+## 🌟 项目概述
 
 **Firefly** 是一款基于 Astro 框架开发的清新美观且现代化个人博客主题，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。
+
+
 
 
 **🖥️在线预览： [Firefly - Demo site](https://demo-firefly.netlify.app/)**
@@ -69,14 +74,20 @@
 - **侧边栏配置**：组件管理、布局控制、响应式配置
 - **导航栏配置**：多级菜单、链接类型、图标集成
 
-## 📫 联系方式
 
-如果你想和我交流技术问题，分享有趣的想法，或者只是想打个招呼，欢迎通过以下方式联系我：
+## 📖 配置说明
 
-- 💻 **GitHub**: [CuteLeaf](https://github.com/CuteLeaf)
-- ✉️ **Email**: [xiaye@msn.com](mailto:xiaye@msn.com)
+### 配置文件结构
 
----
-
-*感谢你的来访！希望在这里能找到对你有用的内容。Firefly博客系统完全开源，如果喜欢的话，不妨给个GitHub点个Star ⭐ 支持一下！*
-
+```
+src/
+├── config.ts                 # 主配置文件
+├── config/
+│   ├── adConfig.ts          # 广告配置
+│   ├── fontConfig.ts        # 字体配置
+│   ├── friendsConfig.ts     # 友链配置
+│   ├── navBarConfig.ts      # 导航栏配置
+│   ├── pioConfig.ts         # 看板娘配置
+│   └── sidebarConfig.ts     # 侧边栏配置
+└── FooterConfig.html        # 页脚HTML内容
+```

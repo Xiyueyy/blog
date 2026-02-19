@@ -12,7 +12,8 @@ const { exec } = require('child_process');
 const PORT = 9000;
 const SECRET = 'firefly-webhook-secret-2026';
 const REPO_DIR = '/root/Firefly';
-const DEPLOY_CMD = `cd ${REPO_DIR} && git pull backup main --no-rebase && pnpm build && rsync -av --delete dist/ /var/www/blog/`;
+// 部署流程：拉取 → 自动更新 updated 字段 → 构建 → 部署
+const DEPLOY_CMD = `cd ${REPO_DIR} && git pull backup main --no-rebase && python3 ${REPO_DIR}/update-dates.py && pnpm build && rsync -av --delete dist/ /var/www/blog/`;
 
 // Bark 推送配置
 const BARK_URL = 'https://bark.ruawd.top/wiamJRL3HgLUYTqy6GmtxL';

@@ -3,7 +3,7 @@ name: Deploy Astro Blog to GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -28,16 +28,19 @@ jobs:
       - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
+          node-version: 20
+          cache: pnpm
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
 
-      - name: 构建博客
+      - name: 构建
         run: pnpm build
+        env:
+          SITE_URL: https://xiyueyy.github.io
+          BASE_PATH: /blog
 
-      - name: 上传构建产物
+      - name: 上传产物
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

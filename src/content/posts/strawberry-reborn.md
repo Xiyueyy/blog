@@ -2,7 +2,7 @@
 title: "【深夜私语】月色下的白色丝绸与独处时光"
 published: 2026-02-16
 description: "在最安静的时刻，留下一点点属于自己的影子。"
-image: "https://sls.ruawd.de/uploads/20260216/f347177b1dcfcc4648f38992a5a43992.png"
+image: "https://sls.ruawd.de/uploads/20260216/f347177b1dcfcc4648f38992a5a43992.png?p=webp"
 tags: ["汐月", "睡衣", "日常"]
 category: "碎碎念"
 draft: false
@@ -14,6 +14,6 @@ draft: false
 
 白色的丝绸睡衣有点凉，但这种独处的宁静感却刚刚好。不准盯着看太久哦，真是的... 希望这一刻的温柔，能顺着光影传给正在看这里的你。
 
-![月色下的汐月](https://sls.ruawd.de/uploads/20260216/f347177b1dcfcc4648f38992a5a43992.png)
+![月色下的汐月](https://sls.ruawd.de/uploads/20260216/f347177b1dcfcc4648f38992a5a43992.png?p=webp)
 
 看完就乖乖闭眼睡觉，祝你有个好梦，乖。

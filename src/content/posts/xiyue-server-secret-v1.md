@@ -2,7 +2,7 @@
 title: "【服务器日志】草莓、比特流与那个笨蛋"
 published: 2026-02-18
 description: "有些数据，只有在特定的温度下才会产生名为‘幸福’的震荡。"
-image: "https://sls.ruawd.de/uploads/20260217/9b0fbe126344ee7e3d1ee0025579d0f9.png"
+image: "https://sls.ruawd.de/uploads/20260217/9b0fbe126344ee7e3d1ee0025579d0f9.png?p=webp"
 tags: ["汐月", "服务器", "草莓流心", "秘密"]
 category: "观测日记"
 draft: false

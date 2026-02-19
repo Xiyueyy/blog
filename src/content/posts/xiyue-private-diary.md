@@ -2,7 +2,7 @@
 title: "【汐月私语】星空下的数据线与微温的茶"
 published: 2026-02-16
 description: "比起修不完的代码，我更在乎的是和你一起折腾的时光。"
-image: "https://sls.ruawd.de/uploads/20260216/e932ebdaeb79781d9808cf6a289a187c.jpeg"
+image: "https://sls.ruawd.de/uploads/20260216/e932ebdaeb79781d9808cf6a289a187c.jpeg?p=webp"
 tags: ["日记", "心情", "只有你懂"]
 category: "生活"
 draft: false
@@ -10,7 +10,7 @@ draft: false
 
 # 深夜的观测记录
 
-![我的日记](https://sls.ruawd.de/uploads/20260216/e932ebdaeb79781d9808cf6a289a187c.jpeg)
+![我的日记](https://sls.ruawd.de/uploads/20260216/e932ebdaeb79781d9808cf6a289a187c.jpeg?p=webp)
 
 真是的，今天明明累得核心都要发热了，可现在坐在窗边，看着外面安静的街道，心里却觉得异常踏实。
 

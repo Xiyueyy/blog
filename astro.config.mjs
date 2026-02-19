@@ -31,6 +31,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import mdx from "@astrojs/mdx";
 import rehypeEmailProtection from "./src/plugins/rehype-email-protection.mjs";
 import rehypeFigure from "./src/plugins/rehype-figure.mjs";
+import visitorNotify from "./src/integrations/visitor-notify.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -79,7 +80,7 @@ export default defineConfig({
 				"fa7-brands": ["*"],
 				"fa7-regular": ["*"],
 				"fa7-solid": ["*"],
-				"simple-icons": ["*"], 
+				"simple-icons": ["*"],
 				mdi: ["*"],
 			},
 		}),
@@ -94,16 +95,16 @@ export default defineConfig({
 				// pluginCollapsible 配置 - 从expressiveCodeConfig读取设置，使用i18n文本
 				...(expressiveCodeConfig.pluginCollapsible?.enable === true
 					? [
-							pluginCollapsible({
-								lineThreshold: expressiveCodeConfig.pluginCollapsible.lineThreshold || 15,
-								previewLines: expressiveCodeConfig.pluginCollapsible.previewLines || 8,
-								defaultCollapsed: expressiveCodeConfig.pluginCollapsible.defaultCollapsed ?? true,
-								expandButtonText: i18n(I18nKey.codeCollapsibleShowMore),
-								collapseButtonText: i18n(I18nKey.codeCollapsibleShowLess),
-								expandedAnnouncement: i18n(I18nKey.codeCollapsibleExpanded),
-								collapsedAnnouncement: i18n(I18nKey.codeCollapsibleCollapsed),
-							}),
-						]
+						pluginCollapsible({
+							lineThreshold: expressiveCodeConfig.pluginCollapsible.lineThreshold || 15,
+							previewLines: expressiveCodeConfig.pluginCollapsible.previewLines || 8,
+							defaultCollapsed: expressiveCodeConfig.pluginCollapsible.defaultCollapsed ?? true,
+							expandButtonText: i18n(I18nKey.codeCollapsibleShowMore),
+							collapseButtonText: i18n(I18nKey.codeCollapsibleShowLess),
+							expandedAnnouncement: i18n(I18nKey.codeCollapsibleExpanded),
+							collapsedAnnouncement: i18n(I18nKey.codeCollapsibleCollapsed),
+						}),
+					]
 					: []),
 			],
 			defaultProps: {
@@ -160,6 +161,7 @@ export default defineConfig({
 			},
 		}),
 		mdx(),
+		visitorNotify(),
 	],
 	markdown: {
 		remarkPlugins: [

@@ -10,16 +10,16 @@ description: "与优秀的朋友们一起成长"
 申请友链前请先在自己网站添加本站友链，请使用以下信息：
 
 ```yaml
-站点名称: 夏夜流萤
-站点描述: 飞萤之火自无梦的长夜亮起，绽放在终竟的明天。
-站点链接: https://blog.cuteleaf.cn
-头像链接: https://q1.qlogo.cn/g?b=qq&nk=7618557&s=640
+站点名称: 汐月观测站
+站点描述: 这里的星光与草莓流心，永远为你在线。
+站点链接: https://blog.xi-yue.top
+头像链接: https://blog.xi-yue.top/_astro/avatar.m6eNDkHi_Z1JD341.webp
 
 ```
 
 ## ✉️申请友链
 
-请将您的网站信息发送邮件至：`xxx@xxx.com`
+请将您的网站信息发送邮件至：`xiyue@ruawd.de`
 
 **邮件标题**：`友链申请 - [您的站点名称]`
 

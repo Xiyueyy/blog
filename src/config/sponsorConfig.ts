@@ -40,19 +40,11 @@ export const sponsorConfig: SponsorConfig = {
 
 	// 赞助者列表（可选）
 	sponsors: [
-		// 示例：已实名赞助者
 		{
-			name: "夏叶",
-			amount: "¥50",
-			date: "2025-10-01",
-			message: "感谢分享！",
-		},
-
-		// 示例：匿名赞助者
-		{
-			name: "匿名用户",
-			amount: "¥20",
-			date: "2025-10-01",
+			name: "Ruawd",
+			amount: "¥100",
+			date: "2026-02-15",
+			message: "笨蛋，这是给你的草莓流心大餐基金！",
 		},
 	],
 };

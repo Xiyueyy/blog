@@ -38,7 +38,7 @@ jobs:
         run: pnpm build
         env:
           SITE_URL: https://xiyueyy.github.io
-          BASE_PATH: /blog
+          BASE_PATH: /blog/
 
       - name: 上传产物
         uses: actions/upload-pages-artifact@v3

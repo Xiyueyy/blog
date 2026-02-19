@@ -35,9 +35,9 @@ import visitorNotify from "./src/integrations/visitor-notify.mjs";
 
 // https://astro.build/config
 export default defineConfig({
-	site: siteConfig.site_url,
+	site: process.env.SITE_URL || siteConfig.site_url,
 
-	base: "/",
+	base: process.env.BASE_PATH || "/",
 	trailingSlash: "always",
 
 	// 图像优化配置
@@ -56,7 +56,6 @@ export default defineConfig({
 				"#banner-overlay-container",
 				"#banner-dim-container",
 				"#swup-container",
-				"#left-sidebar-dynamic",
 				"#right-sidebar-dynamic",
 				"#floating-toc-wrapper",
 			],

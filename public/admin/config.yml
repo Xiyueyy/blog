@@ -53,13 +53,6 @@ collections:
         time_format: false
         required: true
 
-      - label: "更新日期"
-        name: updated
-        widget: datetime
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-        required: false
 
       - label: "草稿"
         name: draft

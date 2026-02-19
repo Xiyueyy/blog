@@ -4,6 +4,7 @@
  */
 
 const http = require('http');
+const https = require('https');
 const crypto = require('crypto');
 const { exec } = require('child_process');
 
@@ -13,10 +14,30 @@ const SECRET = 'firefly-webhook-secret-2026';
 const REPO_DIR = '/root/Firefly';
 const DEPLOY_CMD = `cd ${REPO_DIR} && git pull backup main --no-rebase && pnpm build && rsync -av --delete dist/ /var/www/blog/`;
 
+// Bark 推送配置
+const BARK_URL = 'https://bark.ruawd.top/wiamJRL3HgLUYTqy6GmtxL';
+const BARK_ICON = 'https://sls.ruawd.de/uploads/20260210/b32c85255d9b8fed7099e4935d15436f.png';
+
 // 日志函数
 function log(msg) {
     const time = new Date().toISOString().replace('T', ' ').slice(0, 19);
     console.log(`[${time}] ${msg}`);
+}
+
+// Bark 推送通知
+function sendBark(title, body) {
+    const url = BARK_URL.replace(/\/$/, '') + '/' +
+        encodeURIComponent(title) + '/' +
+        encodeURIComponent(body) +
+        '?icon=' + encodeURIComponent(BARK_ICON) +
+        '&group=blog-deploy';
+
+    https.get(url, (res) => {
+        res.on('data', () => { });
+        res.on('end', () => log('📱 Bark 通知已发送'));
+    }).on('error', (err) => {
+        log(`📱 Bark 通知失败: ${err.message}`);
+    });
 }
 
 // 验证 GitHub Webhook 签名
@@ -30,15 +51,18 @@ function verifySignature(payload, signature) {
 
 // 是否正在部署中（防止重复触发）
 let isDeploying = false;
+// 当前部署的提交信息
+let currentCommitMsg = '';
 
 // 执行部署
-function deploy() {
+function deploy(commitMsg) {
     if (isDeploying) {
         log('⏳ 已有部署任务在执行，跳过');
         return;
     }
 
     isDeploying = true;
+    currentCommitMsg = commitMsg || '';
     log('🚀 开始自动部署...');
 
     exec(DEPLOY_CMD, { timeout: 300000 }, (error, stdout, stderr) => {
@@ -46,9 +70,11 @@ function deploy() {
         if (error) {
             log(`❌ 部署失败: ${error.message}`);
             if (stderr) log(`STDERR: ${stderr.slice(0, 500)}`);
+            sendBark('❌ 博客部署失败', `${currentCommitMsg}\n${error.message.slice(0, 100)}`);
         } else {
             log('✅ 部署成功！');
             if (stdout) log(stdout.slice(-200));
+            sendBark('✅ 博客已自动更新', currentCommitMsg || '部署成功');
         }
     });
 }
@@ -100,7 +126,7 @@ const server = http.createServer((req, res) => {
                     if (message.startsWith('Bot:')) {
                         log('⏭️ Bot 提交，跳过自动部署（VPS 已是最新）');
                     } else {
-                        deploy();
+                        deploy(message);
                     }
                 } else {
                     log(`⏭️ 跳过非 main 分支的推送`);

@@ -45,7 +45,7 @@ export async function GET(context: APIContext) {
 		customData: `<templateTheme>Firefly</templateTheme>
 		<templateThemeVersion>${pkg.version}</templateThemeVersion>
 		<templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl>
-		<lastBuildDate>${formatDateI18nWithTime(new Date())}</lastBuildDate>`,
+		<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
 		items: feedItems,
 	});
 }

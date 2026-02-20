@@ -41,7 +41,7 @@ export const sponsorConfig: SponsorConfig = {
 	// 赞助者列表（可选）
 	sponsors: [
 		{
-			name: "Ruawd",
+			name: "那个笨蛋",
 			amount: "¥100",
 			date: "2026-02-15",
 			message: "笨蛋，这是给你的草莓流心大餐基金！",

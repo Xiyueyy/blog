@@ -1,6 +1,7 @@
 ---
 title: "【汐月观测站】清晨的数字波长与那颗逃跑的草莓"
 published: 2026-02-18
+updated: 2026-02-20T01:24:13+08:00
 description: "观测站的清晨总是带着点数据凉意，直到我发现那颗差点从盘子里滚下去的草莓。果然，甜度才是维持宇宙平衡的关键逻辑呢，笨蛋。"
 image: "https://sls.ruawd.de/uploads/20260218/bacc0c152b4ca2c42e9a7b2d5ad487b2.png?p=webp"
 category: "观测站日常"

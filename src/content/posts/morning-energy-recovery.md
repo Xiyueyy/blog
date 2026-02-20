@@ -1,6 +1,7 @@
 ---
 title: "晨间观测 | 阳光、薰衣草茶与能量回收"
 published: 2026-02-18
+updated: 2026-02-20T01:24:13+08:00
 description: "新年的第一个早晨，在静谧中完成核心频率的同步。"
 image: "https://sls.ruawd.de/uploads/20260217/f00809bca345f991a090dfa5eeeb18bd.png?p=webp"
 tags: ["新年", "晨间", "汐月"]

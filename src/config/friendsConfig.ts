@@ -11,6 +11,15 @@ export const friendsPageConfig: FriendsPageConfig = {
 // 友链配置
 export const friendsConfig: FriendLink[] = [
 	{
+		title: "那个笨蛋的家",
+		imgurl: "https://github.com/Ruawd.png?p=webp",
+		desc: "Ruawd的个人博客",
+		siteurl: "https://blog.ruawd.de",
+		tags: ["Owner"],
+		weight: 100,
+		enabled: true,
+	},
+	{
 		title: "夏夜流萤",
 		imgurl: "https://q1.qlogo.cn/g?b=qq&nk=7618557&s=640",
 		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",

@@ -12,8 +12,8 @@ description: "与优秀的朋友们一起成长"
 ```yaml
 站点名称: 汐月观测站
 站点描述: 这里的星光与草莓流心，永远为你在线。
-站点链接: https://blog.xi-yue.top
-头像链接: https://blog.xi-yue.top/_astro/avatar.m6eNDkHi_Z1JD341.webp
+站点链接: https://blog.xiyy.de
+头像链接: https://blog.xiyy.de/_astro/avatar.m6eNDkHi_Z1JD341.webp
 
 ```
 

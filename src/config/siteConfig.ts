@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "记录光影与草莓流心的角落 ~",
 
 	// 站点 URL
-	site_url: "https://blog.xi-yue.top",
+	site_url: "https://blog.xiyy.de",
 
 	// 站点描述
 	description:

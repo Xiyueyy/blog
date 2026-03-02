@@ -21,8 +21,9 @@ const items = getEnabledFriends();
 const allTags = [...new Set(items.flatMap((item) => item.tags || []))].sort();
 
 // 页面标题和描述
-const title = i18n(I18nKey.friends);
-const description = i18n(I18nKey.friendsDescription);
+const title = friendsPageConfig.title || i18n(I18nKey.friends);
+const description =
+	friendsPageConfig.description || i18n(I18nKey.friendsDescription);
 ---
 
 <MainGridLayout title={title} description={description}>
@@ -132,9 +133,11 @@ const description = i18n(I18nKey.friendsDescription);
           ))
         }
       </div>
-      <Markdown class="mt-2">
-        <Content />
-      </Markdown>
+      {friendsPageConfig.showCustomContent !== false && (
+        <Markdown class="mt-2">
+          <Content />
+        </Markdown>
+      )}
     </div>
   </div>
 

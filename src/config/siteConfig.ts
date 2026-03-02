@@ -108,6 +108,10 @@ export const siteConfig: SiteConfig = {
 	bangumi: {
 		// Bangumi用户ID
 		userId: "1143164",
+		// 条目类型排序，数组中的类型将按顺序优先展示
+		// 可选值: "anime" | "book" | "music" | "game" | "real"
+		// 未列出的类型将按默认顺序排在后面
+		categoryOrder: ["anime", "book", "music", "game"],
 	},
 
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
@@ -119,6 +123,8 @@ export const siteConfig: SiteConfig = {
 		guestbook: true,
 		// 番组计划页面开关，含追番、游戏、书籍和音乐，dev调试时只获取一页数据，build才会获取全部数据
 		bangumi: false,
+		// 相册页面开关
+		gallery: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航

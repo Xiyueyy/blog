@@ -45,6 +45,7 @@ export type SiteConfig = {
 	// 添加bangumi配置
 	bangumi?: {
 		userId?: string; // Bangumi用户ID
+		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[];
 	};
 
 	generateOgImages: boolean;
@@ -75,6 +76,7 @@ export type SiteConfig = {
 		sponsor: boolean; // 赞助页面开关
 		guestbook: boolean; // 留言板页面开关
 		bangumi: boolean;
+		gallery: boolean; // ??????
 	};
 
 	// 分类导航栏开关
@@ -597,6 +599,10 @@ export type FriendLink = {
 };
 
 export type FriendsPageConfig = {
+	title?: string; // ?????????? i18n ????
+	description?: string; // ?????????? i18n ????
+	showCustomContent?: boolean; // ??????????friends.mdx?
+	randomizeSort?: boolean; // ?????????? true???? weight?????
 	columns: 2 | 3; // 显示列数：2列或3列
 };
 

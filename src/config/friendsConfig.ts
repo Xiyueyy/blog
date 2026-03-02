@@ -48,7 +48,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 ];
 
-// 获取启用的友链并按权重排序
+// 获取启用的友链并进行排序
 export const getEnabledFriends = (): FriendLink[] => {
 	return friendsConfig
 		.filter((friend) => friend.enabled)

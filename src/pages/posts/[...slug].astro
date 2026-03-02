@@ -124,6 +124,8 @@ const jsonLd = {
 		: siteConfig.lang.replace("_", "-"),
 	// TODO include cover image here
 };
+
+const relatedPosts = await getRelatedPosts(entry, 5);
 ---
 
 <MainGridLayout
@@ -188,6 +190,18 @@ const jsonLd = {
             }
           </div>
         </div>
+        {entry.data.password && (
+          <div class="flex flex-row items-center">
+            <div
+              class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2"
+            >
+              <Icon name="material-symbols:lock-outline" />
+            </div>
+            <div class="text-sm">
+              {i18n(I18nKey.postEncrypted)}
+            </div>
+          </div>
+        )}
       </div>
 
       <!-- title -->
@@ -380,11 +394,8 @@ const jsonLd = {
     class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full"
   >
     <a
-      href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : "#"}
-      class:list={[
-        "w-full font-bold overflow-hidden active:scale-95",
-        { "pointer-events-none": !entry.data.nextSlug },
-      ]}
+      href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : url("/")}
+      class="w-full font-bold overflow-hidden active:scale-95"
     >
       {
         entry.data.nextSlug && (
@@ -402,11 +413,8 @@ const jsonLd = {
     </a>
 
     <a
-      href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : "#"}
-      class:list={[
-        "w-full font-bold overflow-hidden active:scale-95",
-        { "pointer-events-none": !entry.data.prevSlug },
-      ]}
+      href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : url("/")}
+      class="w-full font-bold overflow-hidden active:scale-95"
     >
       {
         entry.data.prevSlug && (

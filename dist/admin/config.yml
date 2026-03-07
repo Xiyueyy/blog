@@ -1,0 +1,147 @@
+backend:
+  name: github
+  repo: Xiyueyy/blog
+  branch: main
+  base_url: https://sveltia-cms-auth.2338641059.workers.dev
+
+# 媒体文件配置
+media_folder: public/images/posts
+public_folder: /images/posts
+
+# 站点 URL
+site_url: https://blog.xi-yue.top
+display_url: https://blog.xi-yue.top
+
+# 语言设置
+locale: zh_Hans
+
+# 编辑器设置
+slug:
+  encoding: unicode
+  clean_accents: false
+  sanitize_replacement: "-"
+
+# 内容集合
+collections:
+  # 博客文章
+  - name: posts
+    label: "📝 文章"
+    label_singular: "文章"
+    folder: src/content/posts
+    create: true
+    delete: true
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    sortable_fields:
+      fields: [published, title]
+      default:
+        field: published
+        direction: descending
+    summary: "{{title}} - {{published}}"
+    fields:
+      - label: "标题"
+        name: title
+        widget: string
+        required: true
+
+      - label: "发布日期"
+        name: published
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: true
+
+      - label: "更新日期"
+        name: updated
+        widget: datetime
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm"
+        required: false
+        hint: "留空则自动设为当前时间"
+
+      - label: "草稿"
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+
+      - label: "描述"
+        name: description
+        widget: text
+        required: false
+
+      - label: "封面图"
+        name: image
+        widget: string
+        required: false
+        hint: "例如: ./images/my-image.webp"
+
+      - label: "标签"
+        name: tags
+        widget: list
+        required: false
+        allow_add: true
+        label_singular: "标签"
+
+      - label: "分类"
+        name: category
+        widget: string
+        required: false
+
+      - label: "语言"
+        name: lang
+        widget: string
+        required: false
+        hint: "例如: zh_CN, en, ja"
+
+      - label: "置顶"
+        name: pinned
+        widget: boolean
+        default: false
+        required: false
+
+      - label: "作者"
+        name: author
+        widget: string
+        required: false
+
+      - label: "来源链接"
+        name: sourceLink
+        widget: string
+        required: false
+
+      - label: "许可名称"
+        name: licenseName
+        widget: string
+        required: false
+
+      - label: "许可链接"
+        name: licenseUrl
+        widget: string
+        required: false
+
+      - label: "允许评论"
+        name: comment
+        widget: boolean
+        default: true
+        required: false
+
+      - label: "正文"
+        name: body
+        widget: markdown
+
+  # 特殊页面
+  - name: spec
+    label: "📄 页面"
+    folder: src/content/spec
+    create: false
+    delete: false
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - label: "正文"
+        name: body
+        widget: markdown

@@ -127,8 +127,9 @@ const defaultFilter = "all"; // 默认显示全部，用户可以通过筛选器
             class="bangumi-item"
             data-item-section={sectionId}
             data-item-status={statusMap[item.type as keyof typeof statusMap] || "unknown"}
+						style={index < itemsPerPage ? undefined : "display: none;"}
           >
-            <Card item={item} />
+						<Card item={item} loadImage={isActive && index < itemsPerPage} />
           </div>
         ))}
       </div>

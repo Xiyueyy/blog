@@ -26,6 +26,8 @@ export type SiteConfig = {
 	card: {
 		// 是否开启卡片边框和阴影立体效果
 		border: boolean;
+		// 是否让卡片风格跟随主题色相
+		followTheme?: boolean;
 	};
 
 	// 字体配置
@@ -64,6 +66,7 @@ export type SiteConfig = {
 		};
 		title?: string; // 导航栏标题，如果不设置则使用 title
 		widthFull?: boolean; // 导航栏是否占满屏幕宽度
+		menuAlign?: "left" | "center"; // 导航菜单对齐方式（仅桌面端菜单）
 		followTheme?: boolean; // 导航栏图标和标题是否跟随主题色
 	};
 
@@ -193,6 +196,7 @@ export type CommentConfig = {
 	waline?: {
 		serverURL: string;
 		lang?: string;
+		emoji: string[];
 		login?: "enable" | "force" | "disable";
 		visitorCount?: boolean; // 是否统计访问量，true 启用访问量，false 关闭
 	};
@@ -266,6 +270,12 @@ export type ExpressiveCodeConfig = {
 	lightTheme: string;
 	/** 代码块折叠插件配置 */
 	pluginCollapsible?: PluginCollapsibleConfig;
+	/** 语言徽章插件配置 */
+	pluginLanguageBadge?: PluginLanguageBadgeConfig;
+};
+
+export type PluginLanguageBadgeConfig = {
+	enable: boolean; // 是否启用语言徽章
 };
 
 export type PluginCollapsibleConfig = {
@@ -554,6 +564,13 @@ export type BackgroundWallpaperConfig = {
 	};
 	// 全屏透明覆盖模式特有配置
 	overlay?: {
+		switchable?:
+			| boolean
+			| {
+					opacity?: boolean; // 是否允许用户在控制面板调整壁纸透明度
+					blur?: boolean; // 是否允许用户在控制面板调整背景模糊度
+					cardOpacity?: boolean; // 是否允许用户在控制面板调整卡片透明度
+			  }; // 透明模式参数是否可在控制面板调整，支持统一开关或分项开关
 		zIndex?: number; // 层级，确保壁纸在合适的层级显示
 		opacity?: number; // 壁纸透明度，0-1之间
 		blur?: number; // 背景模糊程度，单位px

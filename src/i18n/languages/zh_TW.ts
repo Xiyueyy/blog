@@ -194,15 +194,6 @@ export const zh_TW: Translation = {
 	// 置頂
 	[Key.pinned]: "置頂",
 
-	// 相關文章推薦
-	[Key.relatedPosts]: "相關文章",
-	[Key.randomPosts]: "隨機文章",
-	[Key.smartRecommend]: "智慧推薦",
-	[Key.randomRecommend]: "隨機推薦",
-
-	// 加密
-	[Key.postEncrypted]: "本文已加密",
-
 	// 壁紙模式
 	[Key.wallpaperMode]: "壁紙模式",
 	[Key.wallpaperBannerMode]: "橫幅壁紙",
@@ -289,21 +280,4 @@ export const zh_TW: Translation = {
 	[Key.codeCollapsibleShowLess]: "顯示更少",
 	[Key.codeCollapsibleExpanded]: "代碼區塊已展開",
 	[Key.codeCollapsibleCollapsed]: "代碼區塊已折疊",
-
-	// 相簿頁面
-	[Key.gallery]: "相簿",
-	[Key.galleryDescription]: "記錄生活中的美好瞬間",
-	[Key.galleryPhotos]: "張照片",
-	[Key.galleryAlbums]: "本相簿",
-	[Key.galleryNoAlbums]: "暫無相簿",
-	[Key.galleryBackToAlbums]: "返回相簿列表",
-
-	// 密碼保護
-	[Key.passwordProtected]: "密碼保護",
-	[Key.passwordProtectedDesc]: "這篇文章已被密碼保護，請輸入密碼查看內容。",
-	[Key.passwordHint]: "提示",
-	[Key.passwordPlaceholder]: "請輸入密碼",
-	[Key.passwordSubmit]: "解鎖",
-	[Key.passwordError]: "密碼錯誤，請重試。",
-	[Key.passwordProtectedRss]: "本文已加密保護，請訪問網站查看。",
 };

@@ -2,13 +2,12 @@
 import { Picture } from "astro:assets";
 import * as path from "node:path";
 import type { ImageMetadata } from "astro";
-import { coverImageConfig } from "@/config";
+import { coverImageConfig } from "@/config/coverImageConfig";
 import type { ImageFormat, ResponsiveImageLayout } from "@/types/config";
 import {
 	getFallbackFormat,
 	getImageFormats,
 	getImageQuality,
-	shouldAddNoReferrer,
 } from "@/utils/image-utils";
 import { url } from "@/utils/url-utils";
 
@@ -23,7 +22,6 @@ interface Props {
 	layout?: ResponsiveImageLayout;
 	formats?: ImageFormat[];
 	loading?: "lazy" | "eager";
-	apiUrls?: string[];
 }
 
 const {
@@ -36,7 +34,6 @@ const {
 	layout = "constrained",
 	formats = getImageFormats(),
 	loading = "lazy",
-	apiUrls = [],
 } = Astro.props;
 
 const configQuality = getImageQuality();
@@ -107,25 +104,12 @@ const quality = preview ? Math.round(configQuality * 0.9) : configQuality;
 
 // 是否显示加载动画
 const showLoading = coverImageConfig.randomCoverImage.showLoading ?? true;
-
-// 检查回退图片是否需要 referrerpolicy
-const fallbackReferrerPolicy =
-	isFallbackPublic && fallbackPath && shouldAddNoReferrer(url(fallbackPath))
-		? "no-referrer"
-		: undefined;
-
-// 检查远程图片是否需要 referrerpolicy
-const remoteReferrerPolicy =
-	!isLocal && shouldAddNoReferrer(isPublic ? url(src) : src)
-		? "no-referrer"
-		: undefined;
 ---
 
 <div
 	id={id}
 	class:list={[className, "cover-image-container overflow-hidden relative"]}
 	data-loading={showLoading ? "true" : "false"}
-	data-api-urls={apiUrls.length > 0 ? JSON.stringify(apiUrls) : undefined}
 >
 	<!-- 加载动画 -->
 	{showLoading && (
@@ -168,7 +152,6 @@ const remoteReferrerPolicy =
 				style={imageStyle}
 				loading="lazy"
 				decoding="async"
-				referrerpolicy={fallbackReferrerPolicy}
 			/>
 		</div>
 	)}
@@ -204,7 +187,6 @@ const remoteReferrerPolicy =
 			decoding="async"
 			data-cover-img
 			data-remote="true"
-			referrerpolicy={remoteReferrerPolicy}
 		/>
 	)}
 </div>
@@ -276,21 +258,15 @@ const remoteReferrerPolicy =
 
 <script>
 	function initCoverImages() {
+		// 处理所有封面图容器，无论是否显示加载动画
 		const containers = document.querySelectorAll('.cover-image-container');
 		containers.forEach((container) => {
+			// 跳过已处理过的容器
 			if (container.hasAttribute('data-initialized')) return;
 			container.setAttribute('data-initialized', 'true');
 
 			const img = container.querySelector('img[data-cover-img]') as HTMLImageElement | null;
 			if (!img) return;
-
-			// 解析API URL列表，用于按顺序重试
-			let apiUrls: string[] = [];
-			let currentApiIndex = 1; // 0号已由服务端设为img.src
-			const apiUrlsAttr = container.getAttribute('data-api-urls');
-			if (apiUrlsAttr) {
-				try { apiUrls = JSON.parse(apiUrlsAttr); } catch (_e) { /* ignore */ }
-			}
 
 			const hideLoading = () => {
 				container.setAttribute('data-loading', 'false');
@@ -301,34 +277,26 @@ const remoteReferrerPolicy =
 				container.setAttribute('data-error', 'true');
 			};
 
-			// 统一的错误处理：尝试下一个API或显示回退
-			const onError = () => {
-				if (img.dataset.remote !== 'true') return;
-
-				if (currentApiIndex < apiUrls.length) {
-					// 先绑定好事件，再更换src
-					img.addEventListener('load', hideLoading, { once: true });
-					img.addEventListener('error', onError, { once: true });
-					img.src = apiUrls[currentApiIndex];
-					currentApiIndex++;
-				} else {
-					showError();
-				}
-			};
-
 			if (img.complete) {
 				if (img.naturalWidth > 0) {
 					hideLoading();
-				} else {
-					onError();
+				} else if (img.dataset.remote === 'true') {
+					showError();
 				}
 			} else {
 				img.addEventListener('load', hideLoading, { once: true });
-				img.addEventListener('error', onError, { once: true });
+				img.addEventListener('error', () => {
+					if (img.dataset.remote === 'true') {
+						showError();
+					}
+				}, { once: true });
 			}
 		});
 	}
 
+	// 初始化
 	initCoverImages();
+
+	// 支持 Swup 等页面切换
 	document.addEventListener('astro:page-load', initCoverImages);
 </script>

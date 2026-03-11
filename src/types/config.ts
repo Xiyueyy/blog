@@ -22,9 +22,6 @@ export type SiteConfig = {
 		defaultMode?: LIGHT_DARK_MODE; // 默认模式：浅色、深色或跟随系统
 	};
 
-	// 页面整体宽度（单位：rem）
-	pageWidth?: number;
-
 	// 卡片样式配置
 	card: {
 		// 是否开启卡片边框和阴影立体效果
@@ -47,10 +44,10 @@ export type SiteConfig = {
 		theme: "github" | "obsidian" | "vitepress";
 	};
 
-	// bangumi配置
+	// 添加bangumi配置
 	bangumi?: {
 		userId?: string; // Bangumi用户ID
-		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[]; // 条目类型排序顺序
+		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[];
 	};
 
 	generateOgImages: boolean;
@@ -82,7 +79,7 @@ export type SiteConfig = {
 		sponsor: boolean; // 赞助页面开关
 		guestbook: boolean; // 留言板页面开关
 		bangumi: boolean;
-		gallery: boolean; // 相册页面开关
+		gallery: boolean; // ??????
 	};
 
 	// 分类导航栏开关
@@ -96,8 +93,8 @@ export type SiteConfig = {
 			// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
 			// 是否开启瀑布流布局
 			masonry: boolean;
-			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数，默认 320
-			columnWidth?: number;
+			// 网格模式列数：2 或 3，默认为 2。注意：3列模式仅在单侧边栏（或无侧边栏）且屏幕宽度足够时生效
+			columns?: 2 | 3;
 		};
 	};
 
@@ -126,13 +123,6 @@ export type SiteConfig = {
 		 * 值越低体积越小但质量越差，推荐 70-85
 		 */
 		quality?: number;
-		/**
-		 * 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
-		 * 开启后可解决指定域名图片加载时的 403 问题（如防盗链图片）
-		 * 示例：["i0.hdslb.com", "*.bilibili.com"] 支持通配符 *
-		 * 仅影响匹配域名的图片标签，不影响其他链接的 referrer 行为
-		 */
-		noReferrerDomains?: string[];
 	};
 };
 
@@ -150,7 +140,6 @@ export enum LinkPreset {
 	Sponsor = 4,
 	Guestbook = 5,
 	Bangumi = 6,
-	Gallery = 7,
 }
 
 export type NavBarLink = {
@@ -585,7 +574,6 @@ export type BackgroundWallpaperConfig = {
 		zIndex?: number; // 层级，确保壁纸在合适的层级显示
 		opacity?: number; // 壁纸透明度，0-1之间
 		blur?: number; // 背景模糊程度，单位px
-		cardOpacity?: number; // 卡片背景透明度，0-1之间
 	};
 };
 
@@ -628,10 +616,11 @@ export type FriendLink = {
 };
 
 export type FriendsPageConfig = {
-	title?: string; // 页面标题，留空则使用 i18n 中的翻译
-	description?: string; // 页面描述，留空则使用 i18n 中的翻译
-	showCustomContent?: boolean; // 是否显示自定义内容（friends.mdx）
-	randomizeSort?: boolean; // 是否打乱排序，如果为 true，将忽略 weight，随机排序
+	title?: string; // ?????????? i18n ????
+	description?: string; // ?????????? i18n ????
+	showCustomContent?: boolean; // ??????????friends.mdx?
+	randomizeSort?: boolean; // ?????????? true???? weight?????
+	columns: 2 | 3; // 显示列数：2列或3列
 };
 
 // 音乐播放器配置
@@ -699,6 +688,7 @@ export type SponsorItem = {
 	name: string; // 赞助者名称，如果想显示匿名，可以直接设置为"匿名"或使用 i18n
 	amount?: string; // 赞助金额（可选）
 	date?: string; // 赞助日期（可选，ISO 格式）
+	message?: string; // 留言（可选）
 };
 
 // 赞助配置
@@ -717,20 +707,3 @@ export type ResponsiveImageLayout = "constrained" | "full-width" | "none";
 
 // 图像格式类型
 export type ImageFormat = "avif" | "webp" | "png" | "jpg" | "jpeg" | "gif";
-
-// 相册元信息（用户在配置文件中填写）
-export type GalleryAlbum = {
-	id: string; // URL slug + 目录名，如 "japan-2025"
-	name: string; // 相册名称
-	description?: string; // 相册描述
-	date?: string; // 日期
-	location?: string; // 拍摄地点
-	tags?: string[]; // 标签（用于首页筛选）
-	cover?: string; // 手动指定封面（可选，省略则自动取 cover.* 或第一张）
-};
-
-// 相册配置
-export type GalleryConfig = {
-	albums: GalleryAlbum[];
-	columnWidth?: number; // 瀑布流最小列宽(px)，默认 240，浏览器根据容器宽度自动计算列数
-};

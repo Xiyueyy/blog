@@ -1,0 +1,114 @@
+
+> firefly@6.6.3 build /root/Firefly
+> node scripts/generate-icons.js && astro build && pagefind --site dist
+
+🔍 扫描源文件中的图标使用...
+
+📁 找到 12 个源文件
+
+🎨 发现 18 个不同的图标:
+
+   fa7-solid: 3 个图标
+   material-symbols: 14 个图标
+   svg-spinners: 1 个图标
+
+✅ 成功加载 18 个图标
+
+📝 已生成: /root/Firefly/src/constants/icons.ts
+📦 文件大小: 10.29 KB
+
+04:10:26 [content] Syncing content
+04:10:26 [content] Synced content
+04:10:26 [types] Generated 810ms
+04:10:26 [build] output: "static"
+04:10:26 [build] mode: "static"
+04:10:26 [build] directory: /root/Firefly/dist/
+04:10:26 [build] Collecting build info...
+04:10:26 [build] ✓ Completed in 1.08s.
+04:10:26 [build] Building static entrypoints...
+04:10:43 [vite] ✓ built in 17.03s
+04:10:43 [build] ✓ Completed in 17.12s.
+
+ building client (vite) 
+04:10:43 [vite] transforming...
+04:10:45 [vite] ✓ 284 modules transformed.
+04:10:46 [vite] rendering chunks...
+04:10:47 [vite] computing gzip size...
+04:10:47 [vite] dist/_astro/ec.xb3ii.js                                                         7.95 kB
+04:10:47 [vite] dist/_astro/ec.0ts9d.css                                                       29.96 kB │ gzip:  6.14 kB
+04:10:47 [vite] dist/_astro/url-utils.BgRX8D30.js                                               0.40 kB │ gzip:  0.25 kB
+04:10:47 [vite] dist/_astro/snippet.BlANPz8I.js                                                 0.43 kB │ gzip:  0.31 kB
+04:10:47 [vite] dist/_astro/lifecycle.CWGh8ZU1.js                                               0.54 kB │ gzip:  0.34 kB
+04:10:47 [vite] dist/_astro/input.9jfRxv0h.js                                                   0.83 kB │ gzip:  0.45 kB
+04:10:47 [vite] dist/_astro/SidebarTOC.astro_astro_type_script_index_0_lang.Bvi4Wx24.js         0.89 kB │ gzip:  0.44 kB
+04:10:47 [vite] dist/_astro/client.svelte.7zzmbtFp.js                                           0.98 kB │ gzip:  0.55 kB
+04:10:47 [vite] dist/_astro/SwupScriptsPlugin.HEe14F6q.js                                       1.10 kB │ gzip:  0.61 kB
+04:10:47 [vite] dist/_astro/preload-helper.BhLMWRjL.js                                          1.11 kB │ gzip:  0.64 kB
+04:10:47 [vite] dist/_astro/FancyboxManager.astro_astro_type_script_index_0_lang.XMGSb5sP.js    1.22 kB │ gzip:  0.67 kB
+04:10:47 [vite] dist/_astro/branches.rOtlbXIS.js                                                1.50 kB │ gzip:  0.67 kB
+04:10:47 [vite] dist/_astro/index.modern.CakIiLFM.js                                            1.77 kB │ gzip:  0.90 kB
+04:10:47 [vite] dist/_astro/page.CCaY6Sby.js                                                    2.05 kB │ gzip:  1.01 kB
+04:10:47 [vite] dist/_astro/SwupHeadPlugin.B88uC97e.js                                          2.57 kB │ gzip:  1.24 kB
+04:10:47 [vite] dist/_astro/FloatingTOC.astro_astro_type_script_index_0_lang.BU6Nm5_G.js        3.06 kB │ gzip:  1.08 kB
+04:10:47 [vite] dist/_astro/ArchivePanel.fqYs4kF2.js                                            3.64 kB │ gzip:  1.55 kB
+04:10:47 [vite] dist/_astro/each.DJo7uDcb.js                                                    3.82 kB │ gzip:  1.84 kB
+04:10:47 [vite] dist/_astro/AdvancedSearch.CL3zt0Rb.js                                          3.95 kB │ gzip:  1.83 kB
+04:10:47 [vite] dist/_astro/PioMessageBox.astro_astro_type_script_index_0_lang.B6f9rirj.js      4.17 kB │ gzip:  1.50 kB
+04:10:47 [vite] dist/_astro/LightDarkSwitch.HMMRaFwl.js                                         4.21 kB │ gzip:  1.71 kB
+04:10:47 [vite] dist/_astro/SwupA11yPlugin.DtfNTmN0.js                                          5.29 kB │ gzip:  2.10 kB
+04:10:47 [vite] dist/_astro/tocUtils.sHT5aTR0.js                                                5.38 kB │ gzip:  2.11 kB
+04:10:47 [vite] dist/_astro/SwupPreloadPlugin.ClbQm40Z.js                                       6.09 kB │ gzip:  2.29 kB
+04:10:47 [vite] dist/_astro/Search.CRjX8Dg0.js                                                  7.56 kB │ gzip:  2.71 kB
+04:10:47 [vite] dist/_astro/translation.ImQVUNOD.js                                             8.28 kB │ gzip:  3.86 kB
+04:10:47 [vite] dist/_astro/Layout.astro_astro_type_script_index_0_lang.DsJbuUXp.js             8.43 kB │ gzip:  2.82 kB
+04:10:47 [vite] dist/_astro/setting-utils.C6dLkNFg.js                                           8.96 kB │ gzip:  2.22 kB
+04:10:47 [vite] dist/_astro/DisplaySettingsIntegrated.BkuTyOq0.js                              10.84 kB │ gzip:  3.08 kB
+04:10:47 [vite] dist/_astro/Icon.39V8zEPh.js                                                   11.95 kB │ gzip:  4.47 kB
+04:10:47 [vite] dist/_astro/Swup.zo6v1PBG.js                                                   21.70 kB │ gzip:  7.26 kB
+04:10:47 [vite] dist/_astro/render.BkHS84Qu.js                                                 29.67 kB │ gzip: 11.53 kB
+04:10:47 [vite] dist/_astro/SharePoster.BgIpWoJT.js                                            33.10 kB │ gzip: 12.71 kB
+04:10:47 [vite] dist/_astro/zh_TW.DUjyqjc_.js                                                  53.86 kB │ gzip: 15.03 kB
+04:10:47 [vite] dist/_astro/index.C-3IuVbF.js                                                 115.45 kB │ gzip: 37.74 kB
+04:10:47 [vite] ✓ built in 4.24s
+
+ generating static routes 
+04:10:48 ▶ src/pages/404.astro
+04:10:48   └─ /404.html (+187ms) 
+04:10:48 ▶ src/pages/about.astro
+04:10:48   └─ /about/index.html (+75ms) 
+04:10:48 λ src/pages/api/calendar.json.ts
+04:10:48   └─ /api/calendar.json (+10ms) 
+04:10:48 ▶ src/pages/archive.astro
+04:10:48   └─ /archive/index.html (+65ms) 
+04:10:48 ▶ src/pages/bangumi.astro
+04:10:48   └─ /bangumi/index.html[Bangumi] 🌐 从 API 获取数据
+[Bangumi] 🌐 生产模式 - 开始获取用户 1143164 的 subjectType 1 数据...
+[Bangumi] 正在获取数据: https://api.bgm.tv/v0/users/1143164/collections?subject_type=1&limit=50&offset=0 (已获取: 0)
+[Bangumi] 总共获取到 3 条数据
+[Bangumi] 🌐 生产模式 - 开始获取用户 1143164 的 subjectType 2 数据...
+[Bangumi] 正在获取数据: https://api.bgm.tv/v0/users/1143164/collections?subject_type=2&limit=50&offset=0 (已获取: 0)
+[Bangumi] 总共获取到 9 条数据
+[Bangumi] 🌐 生产模式 - 开始获取用户 1143164 的 subjectType 3 数据...
+[Bangumi] 正在获取数据: https://api.bgm.tv/v0/users/1143164/collections?subject_type=3&limit=50&offset=0 (已获取: 0)
+[Bangumi] 总共获取到 2 条数据
+[Bangumi] 🌐 生产模式 - 开始获取用户 1143164 的 subjectType 4 数据...
+[Bangumi] 正在获取数据: https://api.bgm.tv/v0/users/1143164/collections?subject_type=4&limit=50&offset=0 (已获取: 0)
+[Bangumi] 总共获取到 5 条数据
+ (+988ms) 
+04:10:49 ▶ src/pages/friends.astro
+04:10:49   └─ /friends/index.html (+73ms) 
+04:10:49 ▶ src/pages/guestbook.astro
+04:10:49   └─ /guestbook/index.html (+68ms) 
+04:10:50 λ src/pages/og/[...slug].png.ts
+04:10:50 λ src/pages/robots.txt.ts
+04:10:50   └─ /robots.txt (+2ms) 
+04:10:50 ▶ src/pages/rss.astro
+04:10:50   └─ /rss/index.html (+61ms) 
+04:10:50 λ src/pages/rss.xml.ts
+04:10:50   └─ /rss.xml (+190ms) 
+04:10:50 ▶ src/pages/search.astro
+04:10:50   └─ /search/index.html (+49ms) 
+04:10:50 ▶ src/pages/sponsor.astro
+04:10:50   └─ /sponsor/index.html (+78ms) 
+04:10:50 ▶ src/pages/[...page].astro
+04:10:50   └─ /index.html

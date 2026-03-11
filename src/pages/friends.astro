@@ -39,9 +39,9 @@ const description =
           >
             <Icon name="material-symbols:group" class="text-[1.5rem]" />
           </div>
-          <div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+          <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
             {title}
-          </div>
+          </h1>
         </div>
         {
           description && (
@@ -74,7 +74,7 @@ const description =
         )
       }
 
-      <div class="friends-grid my-4">
+      <div class={`grid grid-cols-1 sm:grid-cols-2 ${friendsPageConfig.columns === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-3 my-4`}>
         {
           items.map((item) => (
             <a
@@ -133,16 +133,13 @@ const description =
           ))
         }
       </div>
+      {friendsPageConfig.showCustomContent !== false && (
+        <Markdown class="mt-2">
+          <Content />
+        </Markdown>
+      )}
     </div>
   </div>
-
-  {friendsPageConfig.showCustomContent !== false && (
-    <div class="mt-4 card-base z-10 px-9 py-6 relative w-full">
-      <Markdown class="">
-        <Content />
-      </Markdown>
-    </div>
-  )}
 
   <!-- 评论区 -->
   <div class="mt-4">
@@ -215,12 +212,4 @@ const description =
       customElements.define("friend-filter", FriendFilter);
     }
   </script>
-
-  <style is:global>
-    .friends-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 0.75rem;
-    }
-  </style>
 </MainGridLayout>

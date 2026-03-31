@@ -14,9 +14,6 @@ export const sponsorConfig: SponsorConfig = {
 	// 是否显示赞助者列表
 	showSponsorsList: true,
 
-	// 是否显示评论区，需要先在commentConfig.ts启用评论系统
-	showComment: true,
-
 	// 是否在文章详情页底部显示赞助按钮
 	showButtonInPost: true,
 
@@ -26,7 +23,7 @@ export const sponsorConfig: SponsorConfig = {
 			name: "支付宝",
 			icon: "fa7-brands:alipay",
 			// 收款码图片路径（需要放在 public 目录下）
-			qrCode: "/assets/images/sponsor/alipay.png",
+			qrCode: "/assets/images/sponsor/alipay.jpg",
 			link: "",
 			description: "使用 支付宝 扫码赞助",
 			enabled: true,
@@ -34,43 +31,20 @@ export const sponsorConfig: SponsorConfig = {
 		{
 			name: "微信",
 			icon: "fa7-brands:weixin",
-			qrCode: "/assets/images/sponsor/wechat.png",
+			qrCode: "/assets/images/sponsor/wechat.jpg",
 			link: "",
 			description: "使用 微信 扫码赞助",
-			enabled: true,
-		},
-		{
-			name: "ko-fi",
-			icon: "simple-icons:kofi",
-			qrCode: "",
-			link: "https://ko-fi.com/cuteleaf",
-			description: "Buy a Coffee for Firefly",
-			enabled: true,
-		},
-		{
-			name: "爱发电",
-			icon: "simple-icons:afdian",
-			qrCode: "",
-			link: "https://ifdian.net/a/cuteleaf",
-			description: "通过 爱发电 进行赞助",
 			enabled: true,
 		},
 	],
 
 	// 赞助者列表（可选）
 	sponsors: [
-		// 示例：已实名赞助者
 		{
-			name: "夏叶",
-			amount: "¥50",
-			date: "2025-10-01",
-		},
-
-		// 示例：匿名赞助者
-		{
-			name: "匿名用户",
-			amount: "¥20",
-			date: "2025-10-01",
+			name: "那个笨蛋",
+			amount: "¥100",
+			date: "2026-02-15",
+			message: "笨蛋，这是给你的草莓流心大餐基金！",
 		},
 	],
 };

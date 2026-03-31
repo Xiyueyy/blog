@@ -3,19 +3,13 @@ title: "友情链接"
 description: "与优秀的朋友们一起成长"
 ---
 
-{/* MDX 文件可以根据自己的喜好完全重写，默认提供的布局仅作为参考模板，也可以使用常规的markdown语法。 */}
-
-{/* ========== 站点信息 ========= */}
-
 export const site = {
-  name: "夏夜流萤",
-  desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
-  url: "https://blog.cuteleaf.cn",
-  avatar: "https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-  email: "xiaye@msn.com",
+  name: "汐月观测站",
+  desc: "这里的星光与草莓流心，永远为你在线。",
+  url: "https://blog.xiyy.de",
+  avatar: "https://blog.xiyy.de/_astro/avatar.m6eNDkHi_Z1JD341.webp",
+  email: "xiyue@ruawd.de",
 };
-
-{/* ========= 注意事项 ========== */}
 
 export const notes = [
   { title: "互换原则", content: "请先将本站添加到您的友链页面，确认后会添加您的友链" },
@@ -24,14 +18,10 @@ export const notes = [
   { title: "站点要求", content: "支持 HTTPS，以原创内容为主，能够正常访问且有持续更新" },
 ];
 
-{/* ============================= */}
-
 <div class="not-prose my-4">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-    {/* 左栏：本站信息 */}
     <div class="rounded-2xl border border-(--line-divider) overflow-hidden flex flex-col">
       <div class="p-5 sm:p-6 flex flex-col flex-1">
-        {/* 头部：头像 + 名称 */}
         <div class="flex items-center gap-4 mb-5">
           <div class="relative shrink-0">
             <div class="w-16 h-16 rounded-xl overflow-hidden ring-2 ring-(--primary)/20">
@@ -51,7 +41,6 @@ export const notes = [
           </div>
         </div>
 
-        {/* 站点信息列表（可复制） */}
         <div class="space-y-2.5 flex-1">
           {[
             { label: "站点名称", value: site.name },
@@ -71,11 +60,9 @@ export const notes = [
             </div>
           ))}
         </div>
-
       </div>
     </div>
 
-    {/* 右栏：申请流程 */}
     <div class="rounded-2xl border border-(--line-divider) overflow-hidden flex flex-col">
       <div class="p-5 sm:p-6 flex flex-col flex-1">
         <h3 class="text-lg font-bold mb-5 flex items-center gap-2">
@@ -86,7 +73,6 @@ export const notes = [
         </h3>
 
         <div class="space-y-0 flex-1">
-          {/* Step 1 */}
           <div class="flex gap-3.5">
             <div class="flex flex-col items-center">
               <div class="w-7 h-7 rounded-full bg-(--primary) text-white text-xs font-bold flex items-center justify-center shrink-0">1</div>
@@ -98,7 +84,6 @@ export const notes = [
             </div>
           </div>
 
-          {/* Step 2 */}
           <div class="flex gap-3.5">
             <div class="flex flex-col items-center">
               <div class="w-7 h-7 rounded-full bg-(--primary) text-white text-xs font-bold flex items-center justify-center shrink-0">2</div>
@@ -117,7 +102,6 @@ export const notes = [
             </div>
           </div>
 
-          {/* Step 3 */}
           <div class="flex gap-3.5">
             <div class="flex flex-col items-center">
               <div class="w-7 h-7 rounded-full bg-(--primary) text-white text-xs font-bold flex items-center justify-center shrink-0">3</div>
@@ -132,7 +116,6 @@ export const notes = [
     </div>
   </div>
 
-  {/* 底部：注意事项 */}
   <div class="mt-4 rounded-2xl border border-(--line-divider) overflow-hidden">
     <div class="p-5 sm:p-6">
       <h3 class="text-base font-bold mb-4 flex items-center gap-2">

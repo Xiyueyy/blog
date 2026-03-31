@@ -36,9 +36,8 @@ import { remarkImageGrid } from "./src/plugins/remark-image-grid.js";
 
 // https://astro.build/config
 export default defineConfig({
-	site: siteConfig.site_url,
-	
-	base: "/",
+	site: process.env.SITE_URL || siteConfig.site_url,
+	base: process.env.BASE_PATH || "/",
 	trailingSlash: "always",
 
 	// 图像优化配置

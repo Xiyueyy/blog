@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>博客管理后台</title>
+    <link href="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.css" rel="stylesheet" />
+<script>
+(function(){
+  if(sessionStorage.getItem("_visitor_notified"))return;
+  sessionStorage.setItem("_visitor_notified","1");
+  fetch("/api/notify",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      page:document.title||window.location.pathname,
+      time:new Date().toLocaleString("zh-CN"),
+      referrer:document.referrer||""
+    })
+  }).catch(function(){});
+})();
+</script></head>
+
+<body>
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+</body>
+
+</html>

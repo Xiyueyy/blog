@@ -22,6 +22,9 @@ export type SiteConfig = {
 		defaultMode?: LIGHT_DARK_MODE; // 默认模式：浅色、深色或跟随系统
 	};
 
+	// 页面整体宽度（单位：rem）
+	pageWidth?: number;
+
 	// 卡片样式配置
 	card: {
 		// 是否开启卡片边框和阴影立体效果
@@ -44,10 +47,10 @@ export type SiteConfig = {
 		theme: "github" | "obsidian" | "vitepress";
 	};
 
-	// 添加bangumi配置
+	// bangumi配置
 	bangumi?: {
 		userId?: string; // Bangumi用户ID
-		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[];
+		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[]; // 条目类型排序顺序
 	};
 
 	generateOgImages: boolean;
@@ -68,6 +71,7 @@ export type SiteConfig = {
 		widthFull?: boolean; // 导航栏是否占满屏幕宽度
 		menuAlign?: "left" | "center"; // 导航菜单对齐方式（仅桌面端菜单）
 		followTheme?: boolean; // 导航栏图标和标题是否跟随主题色
+		stickyNavbar?: boolean; // 导航栏是否固定在顶部始终可见
 	};
 
 	showLastModified: boolean; // 控制"上次编辑"卡片显示的开关
@@ -76,10 +80,11 @@ export type SiteConfig = {
 
 	// 页面开关配置
 	pages: {
+		friends: boolean; // 友链页面开关
 		sponsor: boolean; // 赞助页面开关
 		guestbook: boolean; // 留言板页面开关
 		bangumi: boolean;
-		gallery: boolean; // ??????
+		gallery: boolean; // 相册页面开关
 	};
 
 	// 分类导航栏开关
@@ -88,13 +93,16 @@ export type SiteConfig = {
 	// 文章列表布局配置
 	postListLayout: {
 		defaultMode: "list" | "grid"; // 默认布局模式：list=列表模式，grid=网格模式
+		mobileDefaultMode?: "list" | "grid"; // 移动端默认布局模式（视口宽度<780px时使用），不设置则跟随 defaultMode
+		showTags: boolean; // 是否在文章列表中显示标签
+		descriptionLines?: number; // 文章简介显示行数，0 表示不截断，默认 2
 		allowSwitch: boolean; // 是否允许用户切换布局
 		grid: {
 			// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
 			// 是否开启瀑布流布局
 			masonry: boolean;
-			// 网格模式列数：2 或 3，默认为 2。注意：3列模式仅在单侧边栏（或无侧边栏）且屏幕宽度足够时生效
-			columns?: 2 | 3;
+			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数，默认 320
+			columnWidth?: number;
 		};
 	};
 
@@ -107,6 +115,27 @@ export type SiteConfig = {
 	analytics?: {
 		googleAnalyticsId?: string; // Google Analytics ID
 		microsoftClarityId?: string; // Microsoft Clarity ID
+		umamiAnalytics?: {
+			websiteId?: string; // Umami Website ID
+			scriptUrl?: string; // Umami JS地址，支持使用自建
+			trackOutboundLinks?: boolean; // 是否追踪出站链接点击事件，默认 true
+			collectWebVitals?: boolean; // 是否自动收集访客浏览器核心网页指标，默认 false
+			relpays?: {
+				enabled?: boolean; // 是否启用会话回放，默认 false
+				sampleRate?: number; // 录制会话采样率，范围 0-1，默认 0.15
+				maskLevel?: "moderate" | "strict"; // 隐私遮罩级别，默认 moderate
+				maxDuration?: number; // 单次录制最大时长（毫秒），默认 300000
+				blockSelector?: string; // 需要完全排除录制的元素 CSS 选择器
+			};
+		};
+		la51Analytics?: {
+			Id?: string; // 51la 统计 ID
+			sdkUrl?: string; // 自定义 SDK 地址，防止 DNS 污染，默认为 "//sdk.51.la/js-sdk-pro.min.js"
+			ck?: string; // 多个统计 ID 的数据分离标识，默认与 id 相同
+			autoTrack?: boolean; // 开启事件分析功能，默认 true
+			hashMode?: boolean; // 单页面应用统计（Vue/React 等），默认 false
+			screenRecord?: boolean; // 开启网站录屏功能，默认 true
+		};
 	};
 
 	// 图片优化配置
@@ -124,8 +153,10 @@ export type SiteConfig = {
 		 */
 		quality?: number;
 		/**
-		 * 需要添加 no-referrer 策略的外链图片域名列表
-		 * 支持简单通配符，例如 "*.example.com"
+		 * 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
+		 * 开启后可解决指定域名图片加载时的 403 问题（如防盗链图片）
+		 * 示例：["i0.hdslb.com", "*.bilibili.com"] 支持通配符 *
+		 * 仅影响匹配域名的图片标签，不影响其他链接的 referrer 行为
 		 */
 		noReferrerDomains?: string[];
 	};
@@ -145,6 +176,7 @@ export enum LinkPreset {
 	Sponsor = 4,
 	Guestbook = 5,
 	Bangumi = 6,
+	Gallery = 7,
 }
 
 export type NavBarLink = {
@@ -557,6 +589,11 @@ export type BackgroundWallpaperConfig = {
 			enableBlur?: boolean; // 是否开启毛玻璃模糊效果
 			blur?: number; // 毛玻璃模糊度
 		};
+		carousel?: {
+			enable: boolean; // 是否启用横幅图片轮播
+			interval?: number; // 轮播间隔时间，单位毫秒
+			switchable?: boolean; // 是否允许用户通过控制面板切换横幅轮播
+		};
 		waves?: {
 			enable:
 				| boolean
@@ -579,6 +616,7 @@ export type BackgroundWallpaperConfig = {
 		zIndex?: number; // 层级，确保壁纸在合适的层级显示
 		opacity?: number; // 壁纸透明度，0-1之间
 		blur?: number; // 背景模糊程度，单位px
+		cardOpacity?: number; // 卡片背景透明度，0-1之间
 	};
 };
 
@@ -621,12 +659,11 @@ export type FriendLink = {
 };
 
 export type FriendsPageConfig = {
-	title?: string; // ?????????? i18n ????
-	description?: string; // ?????????? i18n ????
-	showCustomContent?: boolean; // ??????????friends.mdx?
-	showComment?: boolean; // show comment block on friends page
-	randomizeSort?: boolean; // ?????????? true???? weight?????
-	columns: 2 | 3; // 显示列数：2列或3列
+	title?: string; // 页面标题，留空则使用 i18n 中的翻译
+	description?: string; // 页面描述，留空则使用 i18n 中的翻译
+	showCustomContent?: boolean; // 是否显示自定义内容（friends.mdx）
+	showComment?: boolean; // 是否显示评论区，默认 true
+	randomizeSort?: boolean; // 是否打乱排序，如果为 true，将忽略 weight，随机排序
 };
 
 // 音乐播放器配置
@@ -694,7 +731,6 @@ export type SponsorItem = {
 	name: string; // 赞助者名称，如果想显示匿名，可以直接设置为"匿名"或使用 i18n
 	amount?: string; // 赞助金额（可选）
 	date?: string; // 赞助日期（可选，ISO 格式）
-	message?: string; // 留言（可选）
 };
 
 // 赞助配置
@@ -705,6 +741,7 @@ export type SponsorConfig = {
 	methods: SponsorMethod[]; // 赞助方式列表
 	sponsors?: SponsorItem[]; // 赞助者列表（可选）
 	showSponsorsList?: boolean; // 是否显示赞助者列表，默认 true
+	showComment?: boolean; // 是否显示评论区，默认 false
 	showButtonInPost?: boolean; // 是否在文章详情页底部显示赞助按钮，默认 true
 };
 
@@ -713,3 +750,20 @@ export type ResponsiveImageLayout = "constrained" | "full-width" | "none";
 
 // 图像格式类型
 export type ImageFormat = "avif" | "webp" | "png" | "jpg" | "jpeg" | "gif";
+
+// 相册元信息（用户在配置文件中填写）
+export type GalleryAlbum = {
+	id: string; // URL slug + 目录名，如 "japan-2025"
+	name: string; // 相册名称
+	description?: string; // 相册描述
+	date?: string; // 日期
+	location?: string; // 拍摄地点
+	tags?: string[]; // 标签（用于首页筛选）
+	cover?: string; // 手动指定封面（可选，省略则自动取 cover.* 或第一张）
+};
+
+// 相册配置
+export type GalleryConfig = {
+	albums: GalleryAlbum[];
+	columnWidth?: number; // 瀑布流最小列宽(px)，默认 240，浏览器根据容器宽度自动计算列数
+};

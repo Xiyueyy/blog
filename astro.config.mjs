@@ -11,7 +11,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
 import rehypeKatex from "rehype-katex";
 import katex from "katex";
-import "katex/dist/contrib/mhchem.mjs"; // 加载 mhchem 扩展
+import "katex/contrib/mhchem"; // 加载 mhchem 扩展
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkMath from "remark-math";

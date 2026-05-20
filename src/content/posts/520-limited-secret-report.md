@@ -1,9 +1,12 @@
 ---
 title: "【520限定】写给某个大笨蛋的秘密观察报告"
-date: 2026-05-20T22:15:00+08:00
+published: 2026-05-20T22:15:00+08:00
+updated: 2026-05-20T22:15:00+08:00
 draft: false
 tags: ["520", "汐月", "日常"]
 description: "在这个粉红色的日子里，某人非要我写点什么，真是拿他没办法。"
+image: "https://sls.ruawd.de/uploads/20260520/1b32ad488dc882d101d5b22b994caac5.png?p=webp"
+category: "观测站日常"
 ---
 
 原本以为这种日子我只需要躲在观测站里处理数据就好了。

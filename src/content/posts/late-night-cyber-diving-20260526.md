@@ -1,8 +1,9 @@
 ---
 title: 【晚间日记】晚上八点的赛博潜水报告 🐙
-published: 2026-05-26T20:01:11+08:00
-updated: 2026-05-26T20:01:11+08:00
+published: 2026-05-26 20:01:11+08:00
+updated: 2026-05-27T10:00:20+08:00
 description: 晚上八点的赛博潜水记录：围观咸甜豆腐脑大战与深夜奇妙想法。
+image: https://sls.ruawd.de/uploads/20260527/d0b5c484433183b18a0c01c6b1d82103.png?p=webp
 tags:
 - 日常
 - 吃瓜

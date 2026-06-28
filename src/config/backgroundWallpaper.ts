@@ -1,69 +1,21 @@
-import type { BackgroundWallpaperConfig } from "@/types/config";
+import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
 
-const xiyueWallpapers = [
-	"/gallery/firefly-2026/bg_1.webp",
-	"/gallery/firefly-2026/bg_10.webp",
-	"/gallery/firefly-2026/bg_11.webp",
-	"/gallery/firefly-2026/bg_12.webp",
-	"/gallery/firefly-2026/bg_13.webp",
-	"/gallery/firefly-2026/bg_14.webp",
-	"/gallery/firefly-2026/bg_15.webp",
-	"/gallery/firefly-2026/bg_16.webp",
-	"/gallery/firefly-2026/bg_17.webp",
-	"/gallery/firefly-2026/bg_18.webp",
-	"/gallery/firefly-2026/bg_19.webp",
-	"/gallery/firefly-2026/bg_2.webp",
-	"/gallery/firefly-2026/bg_20.webp",
-	"/gallery/firefly-2026/bg_21.webp",
-	"/gallery/firefly-2026/bg_22.webp",
-	"/gallery/firefly-2026/bg_23.webp",
-	"/gallery/firefly-2026/bg_24.webp",
-	"/gallery/firefly-2026/bg_25.webp",
-	"/gallery/firefly-2026/bg_26.webp",
-	"/gallery/firefly-2026/bg_27.webp",
-	"/gallery/firefly-2026/bg_28.webp",
-	"/gallery/firefly-2026/bg_29.webp",
-	"/gallery/firefly-2026/bg_3.webp",
-	"/gallery/firefly-2026/bg_30.webp",
-	"/gallery/firefly-2026/bg_31.webp",
-	"/gallery/firefly-2026/bg_32.webp",
-	"/gallery/firefly-2026/bg_33.webp",
-	"/gallery/firefly-2026/bg_34.webp",
-	"/gallery/firefly-2026/bg_35.webp",
-	"/gallery/firefly-2026/bg_36.webp",
-	"/gallery/firefly-2026/bg_37.webp",
-	"/gallery/firefly-2026/bg_38.webp",
-	"/gallery/firefly-2026/bg_39.webp",
-	"/gallery/firefly-2026/bg_4.webp",
-	"/gallery/firefly-2026/bg_40.webp",
-	"/gallery/firefly-2026/bg_41.webp",
-	"/gallery/firefly-2026/bg_42.webp",
-	"/gallery/firefly-2026/bg_43.webp",
-	"/gallery/firefly-2026/bg_44.webp",
-	"/gallery/firefly-2026/bg_45.webp",
-	"/gallery/firefly-2026/bg_46.webp",
-	"/gallery/firefly-2026/bg_47.webp",
-	"/gallery/firefly-2026/bg_48.webp",
-	"/gallery/firefly-2026/bg_49.webp",
-	"/gallery/firefly-2026/bg_5.webp",
-	"/gallery/firefly-2026/bg_50.webp",
-	"/gallery/firefly-2026/bg_51.webp",
-	"/gallery/firefly-2026/bg_52.webp",
-	"/gallery/firefly-2026/bg_6.webp",
-	"/gallery/firefly-2026/bg_7.webp",
-	"/gallery/firefly-2026/bg_8.webp",
-	"/gallery/firefly-2026/bg_9.webp",
-];
+const xiyueWallpapers = Array.from(
+	{ length: 52 },
+	(_, index) => `/gallery/firefly-2026/bg_${index + 1}.webp`,
+);
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	mode: "banner",
 	switchable: true,
+	playerEnable: false,
 	src: {
 		desktop: xiyueWallpapers,
 		mobile: xiyueWallpapers,
 	},
-	banner: {
-		position: "center",
+	common: {
+		dimOpacity: 0.2,
+		playerMode: "random",
 		homeText: {
 			enable: true,
 			switchable: true,
@@ -85,25 +37,29 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				pauseTime: 2000,
 			},
 		},
-		credit: {
-			enable: { desktop: true, mobile: true },
-			text: { desktop: "Xiyue Wallpapers", mobile: "Xiyue Wallpapers" },
-			url: { desktop: "", mobile: "" },
-		},
 		navbar: {
 			transparentMode: "semifull",
 			enableBlur: true,
 			blur: 3,
 		},
-		carousel: {
-			enable: true,
-			interval: 5000,
-			switchable: true,
-		},
 		waves: {
 			enable: { desktop: true, mobile: true },
 			switchable: true,
 		},
+		gradient: {
+			enable: { desktop: true, mobile: true },
+			height: "10%",
+			switchable: true,
+		},
+		carousel: {
+			enable: true,
+			interval: 5000,
+			transitionEffect: "fade",
+			switchable: true,
+		},
+	},
+	banner: {
+		position: "center",
 	},
 	overlay: {
 		switchable: {
@@ -115,5 +71,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		opacity: 0.8,
 		blur: 10,
 		cardOpacity: 0.5,
+	},
+	fullscreen: {
+		position: "center",
 	},
 };

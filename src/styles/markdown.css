@@ -1,6 +1,14 @@
 @reference "tailwindcss";
 
 .custom-md {
+  overflow-wrap: break-word;
+
+  body.sticky-navbar & {
+    [id] {
+      scroll-margin-top: 5.5rem;
+    }
+  }
+
   h1 {
     @apply text-3xl;
   }
@@ -30,6 +38,7 @@
     @apply relative bg-none font-medium text-(--primary) underline decoration-(--link-underline) decoration-1 decoration-dashed underline-offset-4;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+    word-break: break-word;
 
     &:hover,
     &:active {
@@ -44,7 +53,7 @@
     @apply bg-(--inline-code-bg) text-(--inline-code-color) px-1 py-0.5 rounded-md overflow-hidden;
 
     font-family:
-      "JetBrains Mono Variable",
+      var(--font-jetbrains-mono),
       ui-monospace,
       SFMono-Regular,
       Menlo,

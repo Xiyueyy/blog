@@ -1,5 +1,4 @@
-import type { SiteConfig } from "@/types/config";
-import { fontConfig } from "./fontConfig";
+import type { SiteConfig } from "@/types/siteConfig";
 
 // 定义站点语言
 // 语言代码，例如：'zh_CN', 'zh_TW', 'en', 'ja', 'ru'。
@@ -40,6 +39,11 @@ export const siteConfig: SiteConfig = {
 		defaultMode: "system",
 	},
 
+	// 页面整体宽度（单位：rem）
+	// 数值越大可以让页面内容区域更宽
+	// 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
+	pageWidth: 100,
+
 	// 网站Card样式配置
 	card: {
 		// 是否开启卡片边框和阴影，开启后让网站更有立体感
@@ -66,7 +70,7 @@ export const siteConfig: SiteConfig = {
 		// 支持三种类型：
 		// 1. Astro图标库: { type: "icon", value: "material-symbols:home-pin-outline" }
 		// 2. 本地图片（public目录，不优化）: { type: "image", value: "/assets/images/logo.webp", alt: "Logo" }
-		// 3. 本地图片（src目录，自动优化但会增加构建时间，推荐）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
+		// 3. 本地图片（src目录，自动优化但会增加构建时间）: { type: "image", value: "assets/images/logo.webp", alt: "Logo" }
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		logo: {
 			type: "image",
@@ -75,12 +79,13 @@ export const siteConfig: SiteConfig = {
 		},
 		// 导航栏标题
 		title: "汐月观测站",
-		// 全宽导航栏，导航栏是否占满屏幕宽度，true：占满，false：不占满
+		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
 		menuAlign: "center",
 		// 导航栏图标和标题是否跟随主题色
 		followTheme: false,
+		// 导航栏是否固定在顶部并始终可见
 		stickyNavbar: true,
 	},
 
@@ -91,57 +96,37 @@ export const siteConfig: SiteConfig = {
 	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
 	timezone: "Asia/Shanghai",
 
-	// 提醒框（Admonitions）配置，修改后需要重启开发服务器才能生效
-	// 主题：'github' | 'obsidian' | 'vitepress'，每个主题风格和语法不同，可根据喜好选择
-	rehypeCallouts: {
-		theme: "github",
-	},
-
-	// 文章页底部的"上次编辑时间"卡片开关
-	showLastModified: true,
-
-	// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
-	outdatedThreshold: 30,
-
-	// 是否开启分享海报生成功能
-	sharePoster: true,
-
-	// OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
-	generateOgImages: false,
-
-	// bangumi配置
-	bangumi: {
-		// Bangumi用户ID
-		userId: "1143164",
-		// 条目类型排序，数组中的类型将按顺序优先展示
-		// 可选值: "anime" | "book" | "music" | "game" | "real"
-		// 未列出的类型将按默认顺序排在后面
-		categoryOrder: ["anime", "book", "music", "game"],
-	},
-
-	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
-	// bangumi的数据为编译时获取的，所以不是实时数据，请配置bangumi.userId
+	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404并自动隐藏对应的导航栏菜单项
 	pages: {
+		// 友链页面开关
 		friends: true,
-		// 赞助页面开关
+		// 打赏页面开关
 		sponsor: true,
 		// 留言板页面开关，需要配置评论系统
 		guestbook: true,
-		// 番组计划页面开关，含追番、游戏、书籍和音乐，dev调试时只获取一页数据，build才会获取全部数据
+		// 番组计划页面开关，含追番、游戏、书籍和音乐
 		bangumi: true,
 		// 相册页面开关
 		gallery: true,
+		// 追番页面开关
+		anime: true,
 	},
 
 	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
 	categoryBar: true,
 
+	// 归档页是否折叠非最新年份文章，禁用后默认展开全部年份
+	foldArticle: true,
+
 	// 文章列表布局配置
 	postListLayout: {
 		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
 		defaultMode: "list",
+		// 移动端默认布局模式，不设置则跟随 defaultMode
 		mobileDefaultMode: "list",
+		// 是否在文章列表中显示标签
 		showTags: true,
+		// 文章简介显示行数，设为 0 则不截断
 		descriptionLines: 2,
 		// 是否允许用户切换布局
 		allowSwitch: true,
@@ -149,54 +134,69 @@ export const siteConfig: SiteConfig = {
 		grid: {
 			// 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
 			masonry: false,
-			// 网格模式列数：2 或 3
-			// 2列是默认模式，在任何侧边栏配置下均可生效
-			// 3列模式仅在单侧边栏（或无侧边栏）时生效，
+			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数
 			columnWidth: 320,
 		},
+	},
+
+	// 文章内容页配置
+	post: {
+		// 提醒框（Admonitions）配置，修改后需要重启开发服务器才能生效
+		// 主题：'github' | 'obsidian' | 'vitepress' | 'docusaurus'，每个主题风格和语法不同，可根据喜好选择
+		rehypeCallouts: {
+			theme: "github",
+			// 是否启用兼容 Python-Markdown 风格的 admonition 语法（!!!和???语法）
+			// 注意：只有 theme 配置成 obsidian 主题才能基本支持这些语法，其他主题会有样式问题或不兼容的情况
+			enablePythonMarkdownAdmonitions: false,
+		},
+		// 文章页底部的"上次编辑时间"卡片开关
+		showLastModified: true,
+		// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
+		outdatedThreshold: 30,
+		// 是否开启分享海报生成功能
+		sharePoster: true,
+		// OpenGraph图片功能，注意开启后要渲染很长时间，不建议本地调试的时候开启
+		generateOgImages: false,
+	},
+
+	// bangumi配置
+	bangumi: {
+		// Bangumi用户ID
+		userId: "1143164",
+		// 数据模式：static=构建时获取，dynamic=客户端实时获取
+		// static 模式在构建时获取数据并静态渲染，部署后数据不更新
+		// dynamic 模式在浏览器中实时请求 API，始终显示最新数据
+		mode: "dynamic",
+		// Bangumi API 地址
+		apiUrl: "https://bgmapi.anibt.net",
+		// 详情页地址
+		subjectBaseUrl: "https://bgmmi.anibt.net/subject/",
+		// 条目类型排序，数组中的类型将按顺序优先展示
+		// 可选值: "anime" | "book" | "music" | "game" | "real" (暂不支持"real"类型)
+		// 未列出的类型将按默认顺序排在后面
+		categoryOrder: ["anime", "book", "music", "game"],
+	},
+
+	// 追番配置（Bilibili + TMDB）
+	anime: {
+		// Bilibili 配置
+		bilibili: {
+			// 你的 Bilibili 用户 UID
+			uid: "478883397",
+		},
+		// TMDB 配置（可选，需要翻墙）
+		// tmdb: {
+		//   // TMDB API 密钥
+		//   apiKey: "your_tmdb_api_key",
+		//   // TMDB 列表 ID
+		//   listId: "your_list_id",
+		// },
 	},
 
 	// 分页配置
 	pagination: {
 		// 每页显示的文章数量
 		postsPerPage: 10,
-	},
-
-	// 统计分析
-	analytics: {
-		// Google Analytics ID
-		googleAnalyticsId: "",
-		// Microsoft Clarity ID
-		microsoftClarityId: "",
-		umamiAnalytics: {
-			websiteId: "",
-			scriptUrl: "https://cloud.umami.is/script.js",
-			// 是否追踪出站链接
-			trackOutboundLinks: true,
-			// 是否收集浏览器性能指标
-			collectWebVitals: false,
-			// 会话回放配置
-			relpays: {
-				// 是否启用会话回放
-				enabled: false,
-				// 录制会话采样率，范围 0-1，例如 0.15 表示记录 15% 的会话
-				sampleRate: 0.15,
-				// 隐私遮罩级别："moderate" 会遮罩所有输入框；"strict" 额外遮罩页面全部文本
-				maskLevel: "moderate",
-				// 单次录制最大时长（毫秒）
-				maxDuration: 300000,
-				// 需要排除录制的元素 CSS 选择器，例如 ".sensitive-widget"
-				blockSelector: "",
-			},
-		},
-		la51Analytics: {
-			Id: "",
-			sdkUrl: "",
-			ck: "",
-			autoTrack: false,
-			hashMode: false,
-			screenRecord: true,
-		},
 	},
 
 	// 图像优化及响应式配置
@@ -212,11 +212,11 @@ export const siteConfig: SiteConfig = {
 		formats: "webp",
 		// 图片压缩质量 (1-100)，值越低体积越小但质量越差，推荐 70-85
 		quality: 85,
+		// 为特定域名的图片添加 referrerpolicy="no-referrer" 属性
+		// 支持通配符 *，例如：["i0.hdslb.com", "*.bilibili.com"]
+		// 可解决指定域名图片加载时的 403 问题（如防盗链图片）
+		noReferrerDomains: ["*.hdslb.com", "*.bilibili.com"],
 	},
-
-	// 字体配置
-	// 在src/config/fontConfig.ts中配置具体字体
-	font: fontConfig,
 
 	// 站点语言，在本配置文件顶部SITE_LANG定义
 	lang: SITE_LANG,
